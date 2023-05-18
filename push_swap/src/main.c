@@ -35,14 +35,17 @@ int	main(int argc, char **argv)
 	t_list	**stack_b;
 	char	**arguments;
 
-	arguments = NULL;
 	if (argc < 2)
 		return (-1);
+	arguments = &argv[1];
 	stack_a = (t_list **)malloc(sizeof(t_list *));
 	stack_b = (t_list **)malloc(sizeof(t_list *));
+	*stack_a = NULL;
+	*stack_b = NULL;
+	//write(1, "4\n", 2);
 	if (argc == 2)
-		validate(argv[1]);
-	arguments = join_arguments(argv);
+		validate(arguments[0]);
+	arguments = join_arguments(&argv[1]);
 	stack_a = init_stack(stack_a, arguments);
 	sort(stack_a, stack_b);
 	if (check_sorted(stack_a) == 1)

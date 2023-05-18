@@ -5,8 +5,12 @@ char	**join_arguments(char **argv)
 	int		i;
 	char	**arguments;
 
-	i = 1;
-	arguments = ft_calloc(1, sizeof(char *));
+	i = 0;
+	while (argv[i] != NULL)
+		i++;
+	arguments = (char **)malloc((i + 1 ) * (sizeof(char *)));
+	arguments[i] = NULL;
+	i = 0;
 	while (argv[i] != NULL)
 	{
 		if (!argv[i][0])
@@ -21,18 +25,11 @@ char	**join_arguments(char **argv)
 
 void	validate(char *arguments)
 {
-	int		i;
-	char	*argu;
-
-	i = 0;
-	argu = arguments;
-	if (argu[i] != 0)
+	if (arguments[0] != '\0' && arguments[0] != ' ')
 	{
-		if (argu[0] == ' ')
-			ft_error();
-		check_int(argu);
-		sig_check(argu);
-		check_dup(argu);
+		check_int(arguments);
+		sig_check(arguments);
+		check_dup(arguments);
 	}
 
 }
@@ -78,8 +75,11 @@ void	check_int(char *argu)
 	i = 0;
 	while (argu[i] != '\0')
 	{
-		if (ft_isdigit(argu[i]) == 0)
+		if (argu[i] >= '0' && argu[i] <= '9')
+			i++;
+		if (argu[i] == ' ' && argu[i + 1] != ' ')
+			i++;
+		else
 			ft_error();
-		i++;
 	}
 }
