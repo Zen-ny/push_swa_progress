@@ -1,8 +1,6 @@
 NAME = push_swap
-CHECK = checker
 
 SRCS = $(wildcard src/*.c utils/*.c)
-CHECK = $(wildcard utils/*.c) src/instructions.c checker.c
 
 OBJ = ${SRCS:.c=.o}
 CH_OBJ = ${OBJ:.c=.o}
