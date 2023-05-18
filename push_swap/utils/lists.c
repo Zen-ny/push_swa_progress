@@ -62,3 +62,15 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (size);
 }
+
+t_list	*ft_lstnew(int *value)
+{
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->value = *value;
+	new -> next = NULL;
+	return (new);
+}

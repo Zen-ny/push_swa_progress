@@ -11,10 +11,10 @@ t_list	**init_stack(t_list **stack_a, char **arguments)
 	{
 		value = ft_atoi(arguments[i]);
 		new = ft_lstnew(&value);
+		free(arguments[i]);
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-	free_arguments(arguments);
 	index_stack(stack_a);
 	return (stack_a);
 }
@@ -24,7 +24,7 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize((*stack_a)) == 2)
 		sa(stack_a);
 	if (ft_lstsize((*stack_a)) == 3)
-		sort3(stack_a);
+		sort_tatu(stack_a);
 	if (ft_lstsize((*stack_a)) > 3)
 		sort_large(stack_a, stack_b);
 }

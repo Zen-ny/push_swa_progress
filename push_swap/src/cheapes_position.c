@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int find_cheapest_position(t_list **stack_a, t_list **stack_b)
+int find_cheapest_pos(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp_b;
 	int		cheapest_cost;

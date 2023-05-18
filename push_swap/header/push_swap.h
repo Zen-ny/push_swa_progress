@@ -52,7 +52,7 @@ void	push_to_b(t_list **stack_a, t_list **stack_b, int *total_nodes, int *i);
 void	send_to_b(t_list **stack_a, t_list **stack_b, int *total_nodes);
 void	send_to_b_by_midpoint(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
-void	sort3(t_list **stack_a);
+void	sort_tatu(t_list **stack_a);
 char	**join_arguments(char **argv);
 void	validate(char *arguments);
 void	sig_check(char *arguments);
