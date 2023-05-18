@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-int	target(t_list **stack_a, t_list **stack_b)
+int	find_target_index(t_list **stack_a, t_list **stack_b)
 {
-	int min_diff;
-	int	diff;
-	int target;
+	int 	min_diff;
+	int		diff;
+	int 	target;
 	t_list	*temp_a;
 
 	temp_a = *stack_a;

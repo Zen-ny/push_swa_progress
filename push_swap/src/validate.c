@@ -1,33 +1,31 @@
 #include "push_swap.h"
 
-void	join_arguments(char **argv)
+char	**join_arguments(char **argv)
 {
 	int		i;
 	char	**arguments;
 
 	i = 1;
-	*arguments = ft_calloc(1);
-	while (argv[i] != '\0')
+	arguments = ft_calloc(1, sizeof(char *));
+	while (argv[i] != NULL)
 	{
 		if (!argv[i][0])
 			ft_error();
-		*arguments = strjoin((*arguments), argv[i]);
-		*arguments = strjoin((*arguments), ' ');
+		*arguments = ft_strjoin(*arguments, argv[i]);
+		*arguments = ft_strjoin(*arguments, " ");
 		i++;
 	}
-	validate(arguments);
+	validate(*arguments);
 	return (arguments);
 }
 
-void	validate(char **arguments)
+void	validate(char *arguments)
 {
 	int		i;
-	int		j;
 	char	*argu;
 
 	i = 0;
-	j = 1;
-	argu = *arguments;
+	argu = arguments;
 	if (argu[i] != 0)
 	{
 		if (argu[0] == ' ')
@@ -39,14 +37,15 @@ void	validate(char **arguments)
 
 }
 
-void	sig_check(char *arguments)
+void	sig_check(char *argu)
 {
 	int	j;
 
 	j = 1;
 	while (argu[j] != '\0')
 	{
-		if ((argu[j] == '-' || argu[j] == '+') && (argu[j - 1] != ' '))
+		if ((argu[j] == '-' || argu[j] == '+') 
+			&& (argu[j - 1] != ' '))
 			ft_error();
 		j++;
 	}
@@ -55,12 +54,14 @@ void	sig_check(char *arguments)
 void	check_dup(char	*argu)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (argu[i])
+	j = 0;
+	while (argu[i] != '\0')
 	{
 		j = i + 1;
-		while (argu[j])
+		while (argu[j] != '\0')
 		{
 			if (argu[j] == argu[i])
 				ft_error();
@@ -72,12 +73,10 @@ void	check_dup(char	*argu)
 
 void	check_int(char *argu)
 {
-	int		i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	str = "0123456789";
-	while (argu[i])
+	while (argu[i] != '\0')
 	{
 		if (ft_isdigit(argu[i]) == 0)
 			ft_error();

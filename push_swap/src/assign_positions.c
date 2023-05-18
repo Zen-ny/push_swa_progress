@@ -1,27 +1,33 @@
 #include "push_swap.h"
 
-void	assign_a(t_list *stack_a)
+void	assign_a(t_list **stack_a)
 {
-	int	pos_a;
+	int		pos_a;
+	t_list	*temp;
 
-	pos_a = NULL;
-	while (stack_a != NULL)
+	pos_a = 0;
+	temp = *stack_a;
+	while (temp != NULL)
 	{
-		if (stack_a->index != -1)
-			stack_a->pos_a = pos_a++;
-		stack_a = stack_a->next;
+		if (temp->index != -1)
+			temp->pos_a = pos_a++;
+		temp = temp->next;
 	}
+	return ;
 }
 
-void	assign_b(t_list *stack_b)
+void	assign_b(t_list **stack_b)
 {
-	int	pos_b;
+	int		pos_b;
+	t_list	*temp;
 
-	pos_b = NULL;
-	while (stack_b != NULL)
+	pos_b = 0;
+	temp = *stack_b;
+	while (temp != NULL)
 	{
-		if (stack_b->index != -1)
-			stack_b->pos_b = pos_b++;
-		stack_b = stack_b->next;
+		if (temp->index != -1)
+			temp->pos_b = pos_b++;
+		temp = temp->next;
 	}
+	return ;
 }
