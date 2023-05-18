@@ -30,12 +30,10 @@ int	ft_min(t_list **stack_a)
 	head = *stack_a;
 	min = NULL;
 	i = min->value;
-	while (head)
+	while (head != NULL)
 	{
-		if (i == NULL || head->value < i)
-		{
-			i = head;
-		}
+		if (head->value < i)
+			i = head->value;
 		head = head->next;
 	}
 	return (i);
@@ -50,12 +48,10 @@ int	ft_max(t_list **stack_a)
 	head = *stack_a;
 	max = NULL;
 	i = max->value;
-	while (head)
+	while (head != NULL)
 	{
-		if (i == NULL || head->value > i)
-		{
-			i = head;
-		}
+		if (head->value > i)
+			i = head->value;
 		head = head->next;
 	}
 	return (i);

@@ -36,9 +36,9 @@ int	push(t_list **stack_to, t_list **stack_from)
 	t_list	*head_to;
 	t_list	*tmp;
 
+    head_from = *stack_from;
 	if (ft_lstsize(head_from) == 0)
 		return (-1);
-	head_from = *stack_from;
 	head_to = *stack_to;
 	tmp = head_from;
 	head_from = head_from->next;

@@ -19,14 +19,16 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*temp;
 	t_list	*head;
+	int		value;
 
 	if (!lst || !del)
 		return ;
 	head = *lst;
+	value = head->value;
 	while (head)
 	{
 		temp = head -> next;
-		(*del)(head -> content);
+		(*del)((void*)&value);
 		free(head);
 		head = temp;
 	}
@@ -34,9 +36,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	return ;
 }
 
-void    del(void *content)
+void    del(void *value)
 {
-	free(content);
+	free(value);
 }
 
 t_list	*ft_lstlast(t_list *lst)
