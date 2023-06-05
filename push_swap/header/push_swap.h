@@ -53,11 +53,8 @@ void	send_to_b(t_list **stack_a, t_list **stack_b, int *total_nodes);
 void	send_to_b_by_midpoint(t_list **stack_a, t_list **stack_b);
 void	sort(t_list **stack_a, t_list **stack_b);
 void	sort_tatu(t_list **stack_a);
-char	**join_arguments(char **argv);
+char	*join_arguments(char **argv, char **arguments)
 void	validate(char *arguments);
-void	sig_check(char *arguments);
-void	check_dup(char	*argu);
-void	check_int(char *argu);
 void	ft_error(void);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));

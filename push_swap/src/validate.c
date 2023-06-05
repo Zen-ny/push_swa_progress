@@ -1,85 +1,57 @@
 #include "push_swap.h"
 
-char	**join_arguments(char **argv)
+char	*join_arguments(char **argv, char **arguments)
 {
-	int		i;
-	char	**arguments;
-
-	i = 0;
-	while (argv[i] != NULL)
-		i++;
-	arguments = (char **)malloc((i + 1 ) * (sizeof(char *)));
-	arguments[i] = NULL;
-	i = 0;
+	int	i;
+	
+	i = 1;
 	while (argv[i] != NULL)
 	{
 		if (!argv[i][0])
 			ft_error();
-		*arguments = ft_strjoin(*arguments, argv[i]);
+		*arguments = ft_strjoin(*arguments, argv[i++]);
 		*arguments = ft_strjoin(*arguments, " ");
+	}
+	return (*arguments);
+}
+
+int	validate_arguments(char	**arguments)
+{
+	int		i;
+	char	**temp;
+
+	i = 0;
+	while ((*arguments)[i] != '\0')
+	{
+		if (ft_isalnum((*arguments)[i]) == 0)
+			return (1);
 		i++;
 	}
-	validate(*arguments);
-	return (arguments);
-}
-
-void	validate(char *arguments)
-{
-	if (arguments[0] != '\0' && arguments[0] != ' ')
+	i = 0;
+	temp = ft_split(*arguments, ' ');
+	while (temp[i] != '\0')
 	{
-		check_int(arguments);
-		sig_check(arguments);
-		check_dup(arguments);
-	}
-
-}
-
-void	sig_check(char *argu)
-{
-	int	j;
-
-	j = 1;
-	while (argu[j] != '\0')
-	{
-		if ((argu[j] == '-' || argu[j] == '+') 
-			&& (argu[j - 1] != ' '))
-			ft_error();
-		j++;
+		if (check_sign(&temp[i]) == 1)
+			return (1);
+		i++;
 	}
 }
 
-void	check_dup(char	*argu)
+int	check_sign(int *temp)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (argu[i] != '\0')
+	while (temp[i] != '\0')
 	{
-		j = i + 1;
-		while (argu[j] != '\0')
+		if (temp[i] == '-' || temp[i] == '+')
 		{
-			if (argu[j] == argu[i])
-				ft_error();
-			j++;
+			j = i + 1;
+			if (!(temp[j] >= 48 && temp[j] <= 56))
+				return (1);
 		}
 		i++;
 	}
-}
-
-void	check_int(char *argu)
-{
-	int	i;
-
-	i = 0;
-	while (argu[i] != '\0')
-	{
-		if (argu[i] >= '0' && argu[i] <= '9')
-			i++;
-		if (argu[i] == ' ' && argu[i + 1] != ' ')
-			i++;
-		else
-			ft_error();
-	}
+	return (0);
 }

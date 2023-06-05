@@ -14,7 +14,6 @@ int check_sorted(t_list **stack_a)
     return (0);
 }
 
-
 void	ft_error(void)
 {
 	write (2, "Error\n", 6);

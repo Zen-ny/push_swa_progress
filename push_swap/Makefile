@@ -5,7 +5,7 @@ SRCS = $(wildcard src/*.c utils/*.c)
 OBJ = ${SRCS:.c=.o}
 CH_OBJ = ${OBJ:.c=.o}
 
-CC = gcc -g3 -fsanitize=address -fsanitize=undefined -fsanitize=undefined
+CC = gcc -g -g3 -fsanitize=address -fsanitize=undefined -fsanitize=undefined
 CFLAGS = -Wall -Werror -Wextra -Iheader 
 
 RM = rm -rf
